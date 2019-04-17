@@ -1,0 +1,52 @@
+
+<div class="main">
+  <div class="logi">
+    <h3>Student Details</h3><div>
+    <input type="text" class="form-control m-3" style="width: 30%; float:left;" placeholder="Type to search student">
+      </div><div>
+    <button class="btn btn-primary m-3" 
+    style="float: right;">Add New Trainer
+  </button></div><br><br><br><div>
+  <form [formGroup]="Classform" (ngSubmit)="onAddClass()" style="width: 60%;">
+  
+          <div class="form-group">
+            <label for="exampleInputEmail1"><b>No</b></label>
+            <input type="number" class="form-control" id="exampleInputEmail1"   disabled placeholder="">
+            </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1"><b>StudentName</b></label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="StudentName">
+          </div>
+          <div class="form-group">
+              <label for="exampleInputPassword1"><b>Mobile</b></label>
+              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Mobile">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1"><b>Email</b></label>
+                <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputPassword1"><b>Course</b></label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Course">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1"><b>Trainer</b></label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Trainer">
+                  </div>
+                  <button type="button" class="btn btn-danger btn-sm m-2" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-sm m-2" >Save changes</button>
+        </form></div>
+    <button class="btn btn-danger btn-sm" 
+    style="float:right;" 
+    (click)="clickk()">Exit
+  </button>
+  </div>
+
+  <div class="modal fade" 
+  id="addClassModal" 
+  data-backdrop="static" 
+  role="dialog">
+    <div class="modal-dialog">
+    </div>
+  </div>
+</div>

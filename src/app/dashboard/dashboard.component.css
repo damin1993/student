@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(D:\Angular\StudentInfo\src\assets\images\b4.jpg) no-repeat 0px 0px;
+    min-height: 100vh;
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+}
+h3{
+    color: red;
+    margin: auto;
+    text-align: center;
+}
+.logi{
+        overflow: hidden;
+        color: bisque;
+        background: rgba(0, 0, 0, 0.6117647058823529);
+        padding: 40px 30px 30px 30px;
+        border-radius: 10px;
+        position: absolute;
+        top: 20%;
+        left: 30%;
+        width: 40%;
+        box-shadow: 5px 10px 10px rgba(2, 128, 144, 1);
+}
+
+.alert{
+    color:red;
+    padding: 7px;
+    font-size: 1em; 
+    margin-bottom: 10px;
+    display: inline-block;
+    animation: 2s alertAnim forwards;
+}
+@keyframes alertAnim{
+    from{
+    opacity: 0;
+    transform: translateY(-10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

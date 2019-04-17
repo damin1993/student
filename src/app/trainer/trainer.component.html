@@ -1,0 +1,146 @@
+
+<div class="main">
+  <div class="logi">
+    <h3>Trainer Details</h3>
+    <input type="text" class="form-control m-3" style="width: 30%; float:left;" [(ngModel)]="search" placeholder="Type to search student">
+    <button class="btn btn-primary m-3" 
+    style="float: right;"
+    (click)="openModal()">Add New Trainer
+  </button>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">TrainerName</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Email</th>
+          <th scope="col">Classes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of trainerList; let index=index">
+          <th scope="row">{{index+1}}</th>
+          <td>{{data.name}}</td>
+          <td>{{data.mobile}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.classes}}</td>
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit</button> -->
+         <td> <button type="button" class="btn btn-primary btn-sm m-1"  
+          (click)="onEdit(data,index)">Edit
+        </button>
+        <button type="button" class="btn btn-danger btn-sm m-1" (click)="onDelete(data.ID)">Delete
+        </button>
+        </td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <button class="btn btn-danger btn-sm" 
+    style="float:right;" 
+    (click)="clickk()">Exit
+  </button>
+  </div>
+
+  <div class="modal fade" 
+  id="addClassModal" 
+  data-backdrop="static" 
+  role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" 
+          id="exampleModalLabel">Add Trainer</h5>
+          <button type="button" 
+          class="close" 
+          data-dismiss="modal" 
+          aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="trainerform" (ngSubmit)="onAddTrainer()">  
+        <div class="modal-body table-bordered">
+          <div class="form-group">
+            <label><b>Trainer Name<span style="color: orangered">*</span></b></label>
+            <input type="text" 
+            class="form-control" 
+            formControlName="name" 
+            [ngClass]="((trainerform.controls.name.invalid && trainerform.controls.name.touched)||trainerform.controls.name.darty==true 
+            ?'is-invalid':'')">
+            <div *ngIf="((trainerform.controls.name.invalid && trainerform.controls.name.touched)||trainerform.controls.name.darty)">
+              <div class="alert"
+                   *ngIf="trainerform.controls.name.errors.required">
+                      Name field is Mandatory
+              </div>
+              <div class="alert"
+                   *ngIf="trainerform.controls.name.errors.minlength">
+                      Minimun length is three
+              </div>
+              <div class="alert"
+                   *ngIf="trainerform.controls.name.errors.email">
+                      Enter a valid email
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><b>Email:<span style="color: orangered">*</span></b></label>
+            <input type="email" 
+            class="form-control" 
+            formControlName="email" 
+            [ngClass]="((trainerform.controls.email.invalid && trainerform.controls.email.touched)||trainerform.controls.email.darty==true 
+            ?'is-invalid':'')">
+            <div *ngIf="((trainerform.controls.email.invalid && trainerform.controls.email.touched)||trainerform.controls.email.darty)">
+              <div class="alert"
+                   *ngIf="trainerform.controls.email.errors.required">
+                      email field is Mandatory
+              </div>
+              <div class="alert"
+                   *ngIf="trainerform.controls.email.errors.minlength">
+                      Minimun length is three
+              </div>
+              <div class="alert"
+                   *ngIf="trainerform.controls.email.errors.email">
+                      Enter a valid email
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><b>Mobile:<span style="color: orangered">*</span></b></label>
+            <input type="number" 
+            class="form-control" 
+            formControlName="mobile" 
+            [ngClass]="((trainerform.controls.mobile.invalid && trainerform.controls.mobile.touched)||trainerform.controls.mobile.darty==true 
+            ?'is-invalid':'')">
+            <div *ngIf="((trainerform.controls.mobile.invalid && trainerform.controls.mobile.touched)||trainerform.controls.mobile.darty)">
+              <div class="alert"
+                   *ngIf="trainerform.controls.mobile.errors.required">
+                      mobile field is Mandatory
+              </div>
+              <div class="alert"
+                   *ngIf="trainerform.controls.mobile.errors.minlength">
+                      Minimun length is three
+              </div>
+              <div class="alert"
+                   *ngIf="trainerform.controls.mobile.errors.mobile">
+                      Enter a valid mobile
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><b>Classes:<span style="color: orangered">*</span></b></label>
+            <select class="custom-select form-control" multiple
+            formControlName="classes" >
+              <option *ngFor="let data of classList" [value]="data.ID">{{data.ClassName}}</option>
+            </select>  
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-sm" [disabled]="trainerform.invalid">Save changes</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

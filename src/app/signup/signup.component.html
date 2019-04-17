@@ -1,0 +1,98 @@
+<body>
+    <div class="logi">
+      <h3>Signup Here</h3>
+      <p class="alert alert-danger" *ngIf="message.length>0" >{{message}}</p>
+      <form [formGroup]="signupform" (ngSubmit)="onSignup()">
+        <div class="form-group">
+            <label><b>username:<span style="color: orangered">*</span></b></label>
+            <input 
+            type="text"
+            class="form-control"
+            formControlName="name" 
+            [ngClass]="((signupform.controls.name.invalid && signupform.controls.name.touched)||signupform.controls.name.darty==true 
+            ?'is-invalid':'')">
+            <div *ngIf="((signupform.controls.name.invalid && signupform.controls.name.touched)||signupform.controls.name.darty)">
+              <div class="alert"
+                   *ngIf="signupform.controls.name.errors.required">
+                      Name field is Mandatory
+              </div>
+              <div class="alert"
+                   *ngIf="signupform.controls.name.errors.minlength">
+                      Minimun length is three
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label><b>Email:<span style="color: orangered">*</span></b></label>
+            <input 
+            type="email"
+            class="form-control"
+            formControlName="email" 
+            [ngClass]="((signupform.controls.email.invalid && signupform.controls.email.touched)||signupform.controls.email.darty==true 
+            ?'is-invalid':'')">
+            <div *ngIf="((signupform.controls.email.invalid && signupform.controls.email.touched)||signupform.controls.email.darty)">
+              <div class="alert"
+                   *ngIf="signupform.controls.email.errors.required">
+                      Email field is Mandatory
+              </div>
+              <div class="alert"
+                   *ngIf="signupform.controls.email.errors.minlength">
+                      Minimun length is three
+              </div>
+              <div class="alert"
+                   *ngIf="signupform.controls.email.errors.email">
+                      Enter a valid email
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label><b>mobile:<span style="color: orangered">*</span></b></label>
+            <input 
+            type="text"
+            class="form-control"
+            formControlName="mobile" 
+            [ngClass]="((signupform.controls.mobile.invalid && signupform.controls.mobile.touched)||signupform.controls.mobile.darty==true 
+            ?'is-invalid':'')">
+            <div *ngIf="((signupform.controls.mobile.invalid && signupform.controls.mobile.touched)||signupform.controls.mobile.darty)">
+              <div class="alert"
+                   *ngIf="signupform.controls.mobile.errors.required">
+                      mobile field is Mandatory
+              </div>
+              <div class="alert"
+                   *ngIf="signupform.controls.mobile.errors.minlength">
+                      Minimun length is three
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label><b>Password:<span style="color: orangered">*</span></b></label>
+            <input 
+            type="password"
+            class="form-control"
+            formControlName="password"
+            [ngClass]="((signupform.controls.password.invalid && signupform.controls.password.touched)||signupform.controls.password.darty==true 
+            ?'is-invalid':'')">
+            <div *ngIf="((signupform.controls.password.invalid && signupform.controls.password.touched)||signupform.controls.password.darty)">
+              <div class="alert"
+                   *ngIf="signupform.controls.password.errors.required">
+                      This field is required
+              </div>
+              <div class="alert"
+                   *ngIf="signupform.controls.password.errors.minlength">
+                      Minimun length is five
+              </div>
+              <div class="alert"
+                   *ngIf="signupform.controls.password.errors.maxlength">
+                      Maximum length is 12
+              </div>
+            </div>
+          </div>
+          <a routerLink="/login"><i>Click here to login </i></a><br>
+          <button 
+            type="submit"
+            class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    </body>
